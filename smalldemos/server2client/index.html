@@ -18,17 +18,17 @@
       });
       stream.on('end', function() {
         // despliega los datos en el browser
+        /*
         var img = document.createElement("img");
         img.src = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
         document.body.appendChild(img);        
+        */
         
-        /*
         var music = document.createElement("audio");
         music.src=(window.URL || window.webkitURL).createObjectURL(new Blob(parts));
         music.controls="controls";
         music.preload="";        
-        document.body.appendChild(music);
-        */
+        document.body.appendChild(music);        
       });
     });
     </script> 
