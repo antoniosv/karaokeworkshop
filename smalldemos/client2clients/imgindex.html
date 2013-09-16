@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Stream audio</title>
+    <meta charset="utf-8">
+    <script src="http://cdn.binaryjs.com/0/binary.js"></script>
+  </head>
+  <body style="background-size:cover">
+    <input type="file" id="fileinput" capture="camera"/>
+    <script>
+    // conectar al mismo host de donde fue servido
+    var client = new BinaryClient('ws://localhost:9000');
+    // var client = new BinaryClient('ws://'+document.location.host);
+    alert(document.location.host);
+
+    // Esto solo se recibe si es diferente al que lo mando
+    client.on('stream', function(stream, meta) {
+      var parts = [];
+      stream.on('data', function(data) {
+        parts.push(data);
+      });
+
+      // cuando acabe, lo pone como fondo de imagen
+      stream.on('end', function() {
+        var url = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+        document.body.style.backgroundImage = 'url('+url+')';
+      });
+    });
+
+    // escucha a un archivo siendo escogido
+    fileinput.addEventListener('change', function(event) {
+      alert('va a haber magia!')
+      var file = event.target.files[0];
+      client.send(file);
+    }, false);
+    </script>
+
+  </body>
+</html>
