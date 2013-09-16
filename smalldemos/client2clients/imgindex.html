@@ -11,7 +11,7 @@
     // conectar al mismo host de donde fue servido
     var client = new BinaryClient('ws://localhost:9000');
     // var client = new BinaryClient('ws://'+document.location.host);
-    alert(document.location.host);
+    //alert(document.location.host);
 
     // Esto solo se recibe si es diferente al que lo mando
     client.on('stream', function(stream, meta) {
@@ -23,7 +23,11 @@
       // cuando acabe, lo pone como fondo de imagen
       stream.on('end', function() {
         var url = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
-        document.body.style.backgroundImage = 'url('+url+')';
+        var music = document.createElement("audio");
+        music.src = url;
+        music.controls="controls";
+        document.body.appendChild(music);
+        //document.body.style.backgroundImage = 'url('+url+')';
       });
     });
 
