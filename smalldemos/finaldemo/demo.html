@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Probando media recorder...</title>
+    <meta charset="utf-8">
+    <script src="http://cdn.binaryjs.com/0/binary.js"></script>  
+    <script src="mediaRec.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <input type="file" id="fileinput" capture="camera"/>
+      <button id='vup'>Volume UP</button>
+      <button id='vdown'>Volume DOWN</button>
+<!--      <audio controls autoplay id="playback"></audio> -->
+      <div>
+      <a id="dl" download="mediarecorder.ogg" name="mediarecorder.ogg"></a>
+      </div>
+      <div id="self">
+        <p>Aqui va el audio propio</p>
+        <audio id="track"></audio>
+      </div>
+      <div id="foreign">
+        <p>Aqui va el audio de fuera</p>
+        <audio id="playback"></audio>
+      </div>
+      <p id="data"></p>
+    </div>
+  </body>
+</html>
